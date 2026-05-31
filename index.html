@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DebtLiberate</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Montserrat, Arial, sans-serif;
+      background: #2d2d2d;
+      color: #003049;
+    }
+
+    .main-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,.15);
+    }
+
+    .headline {
+      color: #c70101;
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 25px;
+    }
+
+    .headline strong {
+      color: #201652;
+    }
+
+    .survey-box {
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .question {
+      text-align: center;
+      font-size: 26px;
+      font-weight: 800;
+      margin-bottom: 15px;
+    }
+
+    .progress {
+      height: 14px;
+      background: #eee;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .progress span {
+      display: block;
+      width: 10%;
+      height: 100%;
+      background: #f8d23c;
+    }
+
+    .option {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin-bottom: 14px;
+      font-size: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,.06);
+      cursor: pointer;
+    }
+
+    .option:hover {
+      border-color: #78be20;
+      background: #f7fff2;
+    }
+
+    .banner {
+      margin: 35px auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(135deg, #f7fff2, #eefbe6);
+      border: 1px solid #cfe7b9;
+      border-radius: 14px;
+      padding: 16px 24px;
+      box-shadow: 0 6px 18px rgba(0,0,0,.05);
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .check {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #78be20;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+    }
+
+    .banner strong {
+      color: #78be20;
+    }
+
+    .steps {
+      background: #fff;
+      padding: 20px;
+    }
+
+    .steps h2 {
+      text-align: center;
+      font-size: 38px;
+      font-weight: 800;
+      color: #081226;
+    }
+
+    .steps h2 span {
+      color: #78be20;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      max-width: 1150px;
+      margin: 0 auto;
+    }
+
+    .card {
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      padding: 22px;
+      display: flex;
+      gap: 18px;
+      box-shadow: 0 4px 14px rgba(0,0,0,.04);
+    }
+
+    .number {
+      min-width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #eee;
+      border: 1px solid #d8d8d8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: 800;
+      color: #4b5fc9;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 24px;
+      color: #081226;
+    }
+
+    .card p {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.45;
+      color: #5f6b7a;
+    }
+
+    .footer {
+      background: #fff;
+      text-align: center;
+      padding: 40px 20px 80px;
+      font-size: 14px;
+      color: #2d2d2d;
+    }
+
+    .footer a {
+      color: #003049;
+      text-decoration: none;
+    }
+
+    @media (max-width: 900px) {
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .headline {
+        font-size: 24px;
+      }
+
+      .question {
+        font-size: 22px;
+      }
+
+      .option {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="main-section">
+    <div class="headline">
+      Answer a few quick questions to see if you may qualify for lower monthly
+      <strong>payments, debt consolidation, or hardship relief options.</strong>
+    </div>
+
+    <div class="survey-box">
+      <div class="question">
+        Are Debt Payments Becoming Impossible To Keep Up With?
+      </div>
+
+      <div class="progress">
+        <span></span>
+      </div>
+
+      <div class="option">○ My credit card payments keep getting harder to manage</div>
+      <div class="option">○ I’m struggling to keep up with monthly bills</div>
+      <div class="option">○ I’m only making minimum payments on my debt</div>
+      <div class="option">○ I’m falling behind financially and need relief</div>
+    </div>
+
+    <div class="banner">
+      <span class="check">✓</span>
+      <span>People With <strong>$10,000+</strong> In Debt May Qualify</span>
+    </div>
+  </section>
+
+  <section class="steps">
+    <h2>How <span>Works</span></h2>
+
+    <div class="cards">
+      <div class="card">
+        <div class="number">1</div>
+        <div>
+          <h3>Tell Us About Your Situation</h3>
+          <p>Share a few quick details about your debt and monthly income.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="number">2</div>
+        <div>
+          <h3>Review Personalized Options</h3>
+          <p>See potential paths like payment reductions, consolidation, or hardship relief.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="number">3</div>
+        <div>
+          <h3>Connect With a Relief Specialist</h3>
+          <p>Get matched with professionals who can walk you through next steps.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    | Copyright ©2026 | All Rights Reserved
+    <br><br>
+    <a href="#">Privacy Policy</a> -
+    <a href="#">Terms & Conditions</a> -
+    Disclaimer
+  </footer>
+
+</body>
+</html>
