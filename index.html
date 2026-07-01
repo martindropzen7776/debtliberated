@@ -73,7 +73,6 @@ body{
 .progress-label{
     font-size:14px;
     font-weight:900;
-    color:#fff;
     margin-bottom:8px;
     text-transform:uppercase;
     letter-spacing:.5px;
@@ -104,7 +103,7 @@ body{
 
 .headline span{
     display:block;
-    font-size:66px;
+    font-size:62px;
     color:#ffe600;
     text-shadow:
         0 5px 0 #000,
@@ -113,84 +112,64 @@ body{
 }
 
 .subheadline{
-    font-size:20px;
+    font-size:21px;
     font-weight:800;
-    max-width:780px;
-    margin:0 auto 22px;
-    line-height:1.3;
+    max-width:790px;
+    margin:0 auto 24px;
+    line-height:1.35;
 }
 
 .subheadline strong{
     color:#7cff00;
 }
 
-.buttons{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:18px;
+.single-cta-wrap{
     max-width:820px;
     width:100%;
     margin:0 auto 18px;
 }
 
-.btn{
-    min-height:210px;
+.single-cta{
+    width:100%;
     border:none;
-    border-radius:26px;
-    padding:22px 10px;
-    color:#fff;
+    border-radius:28px;
+    padding:30px 18px;
     cursor:pointer;
-    font-weight:1000;
+    color:#071226;
+    background:linear-gradient(180deg,#ffe600,#78ff00);
+    border:5px solid #ffffff;
+    box-shadow:
+        0 0 36px rgba(120,255,0,.85),
+        inset 0 -12px 20px rgba(0,0,0,.16);
     text-transform:uppercase;
     transition:.2s;
 }
 
-.btn:hover{
+.single-cta:hover{
     transform:scale(1.035);
 }
 
-.yes{
-    background:linear-gradient(180deg,#3dff00,#009c13);
-    border:5px solid #a7ff94;
-    box-shadow:
-        0 0 30px rgba(49,255,0,.75),
-        inset 0 -12px 20px rgba(0,0,0,.20);
-}
-
-.no{
-    background:linear-gradient(180deg,#ff2828,#9b0000);
-    border:5px solid #ff9b9b;
-    box-shadow:
-        0 0 30px rgba(255,0,0,.65),
-        inset 0 -12px 20px rgba(0,0,0,.20);
-}
-
-.icon{
-    width:62px;
-    height:62px;
-    border:5px solid #fff;
-    border-radius:50%;
-    margin:0 auto 10px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:40px;
+.cta-top{
+    font-size:22px;
     font-weight:1000;
+    margin-bottom:8px;
 }
 
-.btn-main{
-    font-size:88px;
-    line-height:.9;
+.cta-main{
+    font-size:60px;
+    line-height:.95;
+    font-weight:1000;
+    text-shadow:0 3px 0 rgba(255,255,255,.55);
 }
 
-.btn-small{
+.cta-sub{
+    margin-top:10px;
     display:inline-block;
-    margin-top:12px;
-    background:#050505;
-    color:#ffe600;
-    padding:9px 14px;
-    border-radius:8px;
-    font-size:16px;
+    background:#071226;
+    color:#fff;
+    padding:10px 16px;
+    border-radius:10px;
+    font-size:17px;
     font-weight:1000;
 }
 
@@ -268,44 +247,35 @@ body{
     }
 
     .headline{
-        font-size:32px;
+        font-size:31px;
         margin-bottom:10px;
     }
 
     .headline span{
-        font-size:40px;
+        font-size:37px;
     }
 
     .subheadline{
         font-size:15px;
-        margin-bottom:13px;
+        margin-bottom:14px;
     }
 
-    .buttons{
-        gap:10px;
-        margin-bottom:12px;
+    .single-cta{
+        border-radius:20px;
+        padding:22px 10px;
     }
 
-    .btn{
-        min-height:170px;
-        border-radius:18px;
-        padding:16px 6px;
+    .cta-top{
+        font-size:15px;
     }
 
-    .icon{
-        width:46px;
-        height:46px;
-        font-size:28px;
-        margin-bottom:8px;
+    .cta-main{
+        font-size:38px;
     }
 
-    .btn-main{
-        font-size:64px;
-    }
-
-    .btn-small{
-        font-size:11px;
-        padding:7px 8px;
+    .cta-sub{
+        font-size:12px;
+        padding:8px 10px;
     }
 
     .qualify-box{
@@ -343,7 +313,7 @@ body{
     }
 
     .headline span{
-        font-size:38px;
+        font-size:34px;
     }
 
     .subheadline{
@@ -351,19 +321,12 @@ body{
         margin-bottom:10px;
     }
 
-    .btn{
-        min-height:140px;
-        padding:12px 6px;
+    .single-cta{
+        padding:18px 10px;
     }
 
-    .btn-main{
-        font-size:50px;
-    }
-
-    .icon{
-        width:38px;
-        height:38px;
-        font-size:23px;
+    .cta-main{
+        font-size:34px;
     }
 
     .qualify-box{
@@ -385,7 +348,7 @@ body{
     <div class="quiz-card">
 
         <div class="top-banner">
-            🇺🇸 U.S. Residents With Debt <span>May Qualify</span>
+            People With Debt <span>May Qualify</span>
         </div>
 
         <div class="progress-wrap">
@@ -396,38 +359,30 @@ body{
         </div>
 
         <h1 class="headline">
-            Is Your Debt
-            <span>Getting Out Of Control?</span>
+            Do You Have Over
+            <span>$10,000 In Debt?</span>
         </h1>
 
         <div class="subheadline">
-            Are you in the U.S. and struggling with debt you can’t afford to pay?
-            Tap <strong>YES</strong> or <strong>NO</strong> to check available options.
+            You may be missing an option that could help make your monthly
+            program payment more manageable. Check if you qualify today.
         </div>
 
-        <div class="buttons">
-
-            <button class="btn yes" onclick="goOffer()">
-                <div class="icon">✓</div>
-                <div class="btn-main">YES</div>
-                <div class="btn-small">Check Eligibility</div>
+        <div class="single-cta-wrap">
+            <button class="single-cta" onclick="goOffer()">
+                <div class="cta-top">YES — SHOW ME MY OPTIONS</div>
+                <div class="cta-main">SEE IF I QUALIFY NOW</div>
+                <div class="cta-sub">Takes About 60 Seconds</div>
             </button>
-
-            <button class="btn no" onclick="goOffer()">
-                <div class="icon">×</div>
-                <div class="btn-main">NO</div>
-                <div class="btn-small">Not Right Now</div>
-            </button>
-
         </div>
 
         <div class="qualify-box">
-            People With <span>$10,000+</span> In Debt May Qualify
+            People With <span>$10,000+</span> In Eligible Debt May Qualify
         </div>
 
         <div class="badges">
             <div>🔒 Confidential</div>
-            <div>⚡ 60 Second Check</div>
+            <div>⚡ Quick Eligibility Check</div>
             <div>✓ No Obligation</div>
         </div>
 
