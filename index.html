@@ -16,16 +16,16 @@
 
 body{
     font-family: Arial, Helvetica, sans-serif;
-    background:#f4f4f4;
-    color:#111;
+    background:linear-gradient(180deg,#f8fafc 0%,#eef4fb 100%);
+    color:#162033;
 }
 
 .page{
     min-height:100vh;
     display:flex;
     justify-content:center;
-    align-items:flex-start;
-    padding:0;
+    align-items:center;
+    padding:18px;
 }
 
 .card{
@@ -33,152 +33,199 @@ body{
     max-width:520px;
     background:#fff;
     text-align:center;
-    min-height:100vh;
+    border-radius:26px;
+    overflow:hidden;
+    box-shadow:0 22px 55px rgba(15,23,42,.12);
+    border:1px solid #e7eef8;
 }
 
 .top-bar{
-    background:linear-gradient(90deg,#1d74d8,#62c4ef);
+    background:linear-gradient(90deg,#2f80ed,#56ccf2);
     color:#fff;
-    font-size:14px;
-    font-weight:700;
-    padding:13px 10px;
+    font-size:15px;
+    font-weight:800;
+    padding:14px 10px;
 }
 
 .content{
-    padding:34px 28px 26px;
+    padding:34px 28px 28px;
+}
+
+.kicker{
+    display:inline-block;
+    background:#ecfdf5;
+    color:#047857;
+    font-size:13px;
+    font-weight:900;
+    padding:8px 13px;
+    border-radius:999px;
+    margin-bottom:18px;
 }
 
 .headline{
-    font-size:26px;
-    line-height:1.25;
+    font-size:28px;
+    line-height:1.18;
     font-weight:900;
     text-transform:uppercase;
-    margin-bottom:30px;
+    margin-bottom:18px;
+    color:#111827;
+}
+
+.headline span{
+    display:block;
+    color:#2f80ed;
+    font-size:42px;
+    margin:6px 0;
+}
+
+.subtext{
+    font-size:15px;
+    line-height:1.45;
+    color:#475569;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+.benefits{
+    background:#f0fdf4;
+    border:1px solid #bbf7d0;
+    border-radius:16px;
+    padding:14px;
+    margin-bottom:24px;
+    display:grid;
+    gap:8px;
+    text-align:left;
+    font-size:14px;
+    font-weight:800;
+    color:#14532d;
 }
 
 .buttons{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:18px;
-    margin-bottom:32px;
+    gap:14px;
+    margin-bottom:16px;
 }
 
 button{
     border:none;
     cursor:pointer;
-    border-radius:4px;
-    padding:15px 10px;
-    background:#2f8de4;
-    color:#fff;
-    font-size:22px;
+    border-radius:14px;
+    padding:16px 10px;
+    font-size:21px;
     font-weight:900;
     text-transform:uppercase;
-    box-shadow:0 2px 0 rgba(0,0,0,.18);
     transition:.15s;
 }
 
 button:hover{
-    transform:translateY(-1px);
-    background:#1978d4;
+    transform:translateY(-2px);
 }
 
-.divider{
-    height:4px;
-    background:#f0f0f0;
-    margin:0 0 18px;
+.yes{
+    background:linear-gradient(180deg,#34d399,#10b981);
+    color:#fff;
+    box-shadow:0 8px 20px rgba(16,185,129,.32);
+}
+
+.no{
+    background:#edf2f7;
+    color:#334155;
+    box-shadow:inset 0 0 0 1px #dbe5ef;
+}
+
+.continue{
+    font-size:13px;
+    font-weight:800;
+    color:#64748b;
+    margin-bottom:22px;
 }
 
 .rating-box{
-    display:inline-flex;
+    display:flex;
+    justify-content:center;
     align-items:center;
-    gap:10px;
-    background:#fff;
-    padding:8px 14px;
-    margin-bottom:28px;
-    box-shadow:0 1px 4px rgba(0,0,0,.08);
-    font-size:18px;
+    gap:8px;
+    margin-bottom:22px;
+    font-size:15px;
     font-weight:800;
+    color:#334155;
 }
 
 .stars{
-    color:#16a05d;
-    letter-spacing:2px;
-    font-size:20px;
-}
-
-.trust{
-    color:#222;
-    font-size:15px;
-    font-weight:700;
-}
-
-.security{
-    background:#f1f1f1;
-    padding:34px 20px 24px;
+    color:#f59e0b;
+    letter-spacing:1px;
+    font-size:19px;
 }
 
 .badges{
     display:flex;
     justify-content:center;
-    align-items:center;
-    gap:16px;
-    margin-bottom:22px;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-bottom:18px;
 }
 
 .badge{
-    width:70px;
-    height:48px;
-    border-radius:8px;
-    background:#fff;
-    border:1px solid #ddd;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:11px;
+    background:#f8fafc;
+    border:1px solid #e2e8f0;
+    color:#334155;
+    padding:8px 12px;
+    border-radius:999px;
+    font-size:12px;
     font-weight:900;
-    color:#333;
-    line-height:1.1;
+}
+
+.loader{
+    display:none;
+    margin-top:12px;
+    color:#2f80ed;
+    font-size:15px;
+    font-weight:900;
 }
 
 .links{
     font-size:12px;
     font-weight:700;
+    margin-bottom:18px;
 }
 
 .links a{
-    color:#1a3fa3;
+    color:#2563eb;
     margin:0 8px;
     text-decoration:underline;
 }
 
-.loader{
-    display:none;
-    margin-top:18px;
-    color:#1d74d8;
-    font-size:15px;
-    font-weight:800;
-}
-
 .footer{
-    padding:14px 22px 28px;
-    background:#f1f1f1;
-    color:#666;
+    background:#f8fafc;
+    color:#64748b;
     font-size:10px;
-    line-height:1.4;
+    line-height:1.45;
+    padding:16px 22px 24px;
+    border-top:1px solid #e2e8f0;
 }
 
 @media(max-width:480px){
+    .page{
+        padding:10px;
+        align-items:flex-start;
+    }
+
+    .content{
+        padding:28px 20px 24px;
+    }
+
     .headline{
         font-size:23px;
     }
 
-    .content{
-        padding:30px 22px 24px;
+    .headline span{
+        font-size:36px;
     }
 
     button{
-        font-size:20px;
-        padding:14px 8px;
+        font-size:18px;
+        padding:15px 8px;
     }
 
     .top-bar{
@@ -199,39 +246,56 @@ button:hover{
 
         <div class="content">
 
-            <h1 class="headline">
-                DO YOU HAVE MORE THAN $10,000 IN CREDIT CARD DEBT?
-            </h1>
-
-            <div class="buttons">
-                <button onclick="goOffer()">YES</button>
-                <button onclick="goOffer()">NO</button>
+            <div class="kicker">
+                Free Eligibility Check
             </div>
 
-            <div class="divider"></div>
+            <h1 class="headline">
+                Do You Have More Than
+                <span>$10,000</span>
+                In Credit Card Debt?
+            </h1>
+
+            <div class="subtext">
+                Check whether you may qualify for debt relief options that could help make your monthly program payment more manageable.
+            </div>
+
+            <div class="benefits">
+                <div>✓ Takes about 60 seconds</div>
+                <div>✓ No obligation to continue</div>
+                <div>✓ Explore available debt relief options</div>
+            </div>
+
+            <div class="buttons">
+                <button class="yes" onclick="goOffer()">Yes</button>
+                <button class="no" onclick="goOffer()">No</button>
+            </div>
+
+            <div class="continue">
+                Choose an option to continue
+            </div>
 
             <div class="rating-box">
                 <span>Excellent</span>
                 <span class="stars">★★★★★</span>
-                <span class="trust">Trustpilot</span>
+                <span>4.8 Average Rating</span>
+            </div>
+
+            <div class="badges">
+                <div class="badge">🔒 Secure</div>
+                <div class="badge">✓ Confidential</div>
+                <div class="badge">⚡ Fast Check</div>
             </div>
 
             <div class="loader" id="loader">
                 Checking available options...
             </div>
 
-        </div>
-
-        <div class="security">
-            <div class="badges">
-                <div class="badge">SECURE<br>CHECK</div>
-                <div class="badge">PRIVACY<br>SAFE</div>
-            </div>
-
             <div class="links">
                 <a href="#">Privacy Policy</a>
                 <a href="#">Terms of Use</a>
             </div>
+
         </div>
 
         <div class="footer">
