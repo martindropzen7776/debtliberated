@@ -2,24 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Compare Roofing Quotes</title>
 
   <style>
     :root {
-      --blue: #2395d3;
-      --blue-dark: #1478ad;
-      --navy: #17283b;
-      --green: #249a5a;
-      --gray: #65717e;
-      --light-gray: #f3f6f8;
-      --border: #d9e1e7;
+      --navy: #102a43;
+      --blue: #1686d9;
+      --blue-dark: #0866ad;
+      --green: #20a464;
+      --yellow: #ffc83d;
+      --light: #f3f8fc;
+      --gray: #657786;
+      --border: #d8e3ec;
       --white: #ffffff;
-      --shadow: 0 12px 35px rgba(20, 55, 80, 0.12);
     }
 
     * {
@@ -28,403 +25,272 @@
 
     body {
       margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 20px;
       background:
-        radial-gradient(circle at top left, #eef8fd 0, transparent 35%),
-        var(--white);
+        radial-gradient(circle at top left, #dff3ff, transparent 38%),
+        linear-gradient(135deg, #f8fbfe, #edf6fb);
       color: var(--navy);
       font-family: Arial, Helvetica, sans-serif;
     }
 
-    button,
-    input {
-      font: inherit;
-    }
-
-    .page {
-      width: min(1080px, 100%);
-      margin: 0 auto;
-      padding: 28px 18px 60px;
-    }
-
-    .top-card {
+    .landing {
+      width: min(980px, 100%);
       overflow: hidden;
       background: var(--white);
       border: 1px solid var(--border);
       border-radius: 22px;
-      box-shadow: var(--shadow);
+      box-shadow: 0 20px 60px rgba(16, 42, 67, 0.15);
     }
 
-    .hero {
-      padding: 38px 24px 30px;
-      text-align: center;
+    .content {
+      display: grid;
+      grid-template-columns: 1fr 0.95fr;
+      align-items: center;
+      gap: 30px;
+      padding: 34px;
     }
 
-    .eyebrow {
-      display: inline-block;
-      margin-bottom: 18px;
-      padding: 9px 15px;
-      background: #dff3ff;
-      border-radius: 7px;
-      color: #123954;
-      font-size: 16px;
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 13px;
+      padding: 8px 13px;
+      background: #e1f3ff;
+      border-radius: 999px;
+      color: var(--blue-dark);
+      font-size: 13px;
       font-weight: 800;
-      letter-spacing: 0.02em;
     }
 
     h1 {
-      max-width: 800px;
-      margin: 0 auto 13px;
-      font-size: clamp(32px, 5vw, 53px);
-      line-height: 1.06;
-      letter-spacing: -0.04em;
+      margin: 0 0 12px;
+      font-size: clamp(31px, 5vw, 49px);
+      line-height: 1.02;
+      letter-spacing: -0.045em;
     }
 
-    .hero-copy {
-      max-width: 690px;
-      margin: 0 auto 26px;
+    h1 span {
+      color: var(--blue);
+    }
+
+    .subtitle {
+      margin: 0 0 20px;
       color: var(--gray);
-      font-size: 19px;
-      line-height: 1.55;
-    }
-
-    .question-box {
-      width: min(630px, 100%);
-      margin: 0 auto;
-      padding: 25px;
-      background: var(--light-gray);
-      border: 1px solid var(--border);
-      border-radius: 18px;
+      font-size: 17px;
+      line-height: 1.5;
     }
 
     .question {
-      margin: 0 0 19px;
-      font-size: 26px;
+      margin-bottom: 12px;
+      font-size: 20px;
       font-weight: 800;
     }
 
-    .answer-row {
+    .buttons {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
+      grid-template-columns: 1fr 1fr;
+      gap: 11px;
     }
 
-    .answer-button {
-      min-height: 57px;
-      padding: 13px 22px;
-      background: var(--white);
+    .answer {
+      min-height: 50px;
       border: 2px solid var(--blue);
-      border-radius: 8px;
+      border-radius: 9px;
+      background: var(--white);
       color: var(--navy);
       cursor: pointer;
       font-weight: 800;
-      transition:
-        transform 0.15s ease,
-        background-color 0.15s ease,
-        color 0.15s ease;
+      transition: 0.15s ease;
     }
 
-    .answer-button:hover,
-    .answer-button:focus-visible {
+    .answer:hover,
+    .answer.active {
       background: var(--blue);
       color: var(--white);
-      transform: translateY(-2px);
-      outline: none;
+      transform: translateY(-1px);
     }
 
-    .answer-button.selected {
-      background: var(--blue);
-      color: var(--white);
-    }
-
-    .privacy {
-      margin: 16px 0 0;
+    .disclaimer {
+      margin: 12px 0 0;
       color: var(--gray);
-      font-size: 13px;
+      font-size: 11px;
       line-height: 1.45;
     }
 
-    .privacy-icon {
-      margin-right: 4px;
-    }
-
-    .message {
-      display: none;
-      width: min(630px, 100%);
-      margin: 18px auto 0;
-      padding: 15px 18px;
-      border-radius: 9px;
-      font-size: 15px;
-      font-weight: 700;
-    }
-
-    .message.visible {
-      display: block;
-    }
-
-    .message.success {
-      background: #e8f8ef;
-      border: 1px solid #aadabe;
-      color: #17673c;
-    }
-
-    .message.info {
-      background: #edf6fc;
-      border: 1px solid #b8d9ed;
-      color: #185373;
-    }
-
-    .trust-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      border-top: 1px solid var(--border);
-    }
-
-    .trust-item {
-      padding: 20px 16px;
-      text-align: center;
-    }
-
-    .trust-item + .trust-item {
-      border-left: 1px solid var(--border);
-    }
-
-    .trust-title {
-      display: block;
-      margin-bottom: 5px;
-      font-size: 17px;
-      font-weight: 800;
-    }
-
-    .trust-text {
-      color: var(--gray);
-      font-size: 13px;
-      line-height: 1.4;
-    }
-
-    .section {
-      padding: 58px 0 0;
-    }
-
-    .section-heading {
-      max-width: 710px;
-      margin: 0 auto 28px;
-      text-align: center;
-    }
-
-    .section-heading h2 {
-      margin: 0 0 12px;
-      font-size: clamp(29px, 4vw, 42px);
-      letter-spacing: -0.035em;
-    }
-
-    .section-heading p {
-      margin: 0;
-      color: var(--gray);
-      font-size: 18px;
-      line-height: 1.55;
-    }
-
-    .comparison {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-
-    .roof-card {
-      overflow: hidden;
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      box-shadow: var(--shadow);
-    }
-
-    .image-wrap {
+    .compare {
       position: relative;
-      aspect-ratio: 16 / 10;
+      width: 100%;
+      aspect-ratio: 4 / 3;
       overflow: hidden;
-      background: #dfe7ec;
+      border-radius: 17px;
+      background: #dbe6ec;
+      box-shadow: 0 14px 35px rgba(16, 42, 67, 0.18);
+      user-select: none;
     }
 
-    .image-wrap img {
+    .compare img {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
-      display: block;
       object-fit: cover;
+      pointer-events: none;
     }
 
-    .before img {
-      filter: saturate(0.65) contrast(0.9) brightness(0.82);
-    }
-
-    .after img {
-      filter: saturate(1.15) contrast(1.05);
-    }
-
-    .image-label {
+    .after-wrap {
       position: absolute;
-      top: 16px;
-      left: 16px;
-      padding: 9px 14px;
+      inset: 0;
+      width: 50%;
+      overflow: hidden;
+    }
+
+    .after-wrap img {
+      width: 100%;
+      min-width: 100%;
+    }
+
+    .label {
+      position: absolute;
+      top: 14px;
+      z-index: 4;
+      padding: 7px 11px;
       border-radius: 999px;
       color: var(--white);
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 900;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
-    .before .image-label {
-      background: #c63e39;
+    .before-label {
+      right: 14px;
+      background: rgba(186, 46, 46, 0.9);
     }
 
-    .after .image-label {
-      background: var(--green);
+    .after-label {
+      left: 14px;
+      background: rgba(32, 164, 100, 0.92);
     }
 
-    .roof-content {
-      padding: 22px;
-    }
-
-    .roof-content h3 {
-      margin: 0 0 8px;
-      font-size: 22px;
-    }
-
-    .roof-content p {
-      margin: 0;
-      color: var(--gray);
-      line-height: 1.55;
-    }
-
-    .benefits {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-top: 26px;
-    }
-
-    .benefit {
-      padding: 23px;
+    .slider-line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      z-index: 5;
+      width: 4px;
       background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 15px;
-      text-align: center;
+      transform: translateX(-50%);
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12);
     }
 
-    .benefit-icon {
+    .slider-handle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 6;
       width: 48px;
       height: 48px;
       display: grid;
       place-items: center;
-      margin: 0 auto 13px;
-      background: #e4f5fe;
+      border: 4px solid var(--white);
       border-radius: 50%;
-      color: var(--blue-dark);
-      font-size: 22px;
-      font-weight: 900;
-    }
-
-    .benefit h3 {
-      margin: 0 0 7px;
-      font-size: 18px;
-    }
-
-    .benefit p {
-      margin: 0;
-      color: var(--gray);
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    .cta-card {
-      margin-top: 48px;
-      padding: 36px 24px;
-      background: linear-gradient(135deg, var(--navy), #245679);
-      border-radius: 21px;
+      background: var(--blue);
       color: var(--white);
-      text-align: center;
-      box-shadow: var(--shadow);
+      font-size: 19px;
+      font-weight: 900;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 5px 16px rgba(0, 0, 0, 0.25);
+      pointer-events: none;
     }
 
-    .cta-card h2 {
-      margin: 0 0 10px;
-      font-size: clamp(28px, 4vw, 40px);
+    .range {
+      position: absolute;
+      inset: 0;
+      z-index: 7;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: ew-resize;
     }
 
-    .cta-card p {
-      max-width: 680px;
-      margin: 0 auto 21px;
-      color: #d9e8f3;
-      font-size: 17px;
-      line-height: 1.55;
+    .badges {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--border);
+      background: var(--light);
     }
 
-    .cta-button {
-      display: inline-block;
-      padding: 16px 28px;
+    .badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 16px 12px;
+      text-align: left;
+    }
+
+    .badge + .badge {
+      border-left: 1px solid var(--border);
+    }
+
+    .badge-icon {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      flex: 0 0 34px;
+      place-items: center;
+      border-radius: 50%;
       background: var(--green);
-      border: 0;
-      border-radius: 9px;
       color: var(--white);
-      cursor: pointer;
       font-weight: 900;
-      text-decoration: none;
-      transition:
-        transform 0.15s ease,
-        filter 0.15s ease;
     }
 
-    .cta-button:hover,
-    .cta-button:focus-visible {
-      filter: brightness(1.07);
-      transform: translateY(-2px);
-      outline: none;
+    .badge strong {
+      display: block;
+      font-size: 13px;
     }
 
-    .disclosure {
-      max-width: 760px;
-      margin: 17px auto 0;
-      color: #c5d7e4;
-      font-size: 12px;
-      line-height: 1.5;
-    }
-
-    footer {
-      padding-top: 34px;
+    .badge span {
+      display: block;
+      margin-top: 2px;
       color: var(--gray);
-      font-size: 12px;
-      line-height: 1.6;
-      text-align: center;
+      font-size: 10px;
     }
 
-    @media (max-width: 720px) {
-      .page {
-        padding: 15px 12px 40px;
+    .status {
+      display: none;
+      margin-top: 11px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: #e7f8ef;
+      color: #19663f;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .status.show {
+      display: block;
+    }
+
+    @media (max-width: 740px) {
+      body {
+        padding: 10px;
       }
 
-      .hero {
-        padding: 28px 17px 24px;
+      .content {
+        grid-template-columns: 1fr;
+        padding: 24px 18px;
       }
 
-      .question-box {
-        padding: 20px 15px;
-      }
-
-      .question {
-        font-size: 22px;
-      }
-
-      .answer-row,
-      .comparison,
-      .benefits {
+      .badges {
         grid-template-columns: 1fr;
       }
 
-      .trust-row {
-        grid-template-columns: 1fr;
-      }
-
-      .trust-item + .trust-item {
+      .badge + .badge {
         border-top: 1px solid var(--border);
         border-left: 0;
       }
@@ -433,216 +299,136 @@
 </head>
 
 <body>
-  <main class="page">
-    <section class="top-card">
-      <div class="hero">
-        <div class="eyebrow">
-          Thinking About Replacing Your Roof?
-        </div>
+  <main class="landing">
+    <section class="content">
+      <div>
+        <div class="tag">✓ Roofing Quote Comparison</div>
 
         <h1>
-          Compare Available Roofing Quotes in Your Area
+          What Could a <span>New Roof</span> Cost?
         </h1>
 
-        <p class="hero-copy">
-          Review quote options from local roofing professionals and
-          compare price, cost and possible savings before choosing
-          how to move forward.
+        <p class="subtitle">
+          Compare available roofing quotes, prices and costs from local
+          professionals before deciding.
         </p>
 
-        <div class="question-box">
-          <p class="question">Do you own the home?</p>
+        <div class="question">Do you own the home?</div>
 
-          <div class="answer-row">
-            <button
-              type="button"
-              class="answer-button"
-              data-answer="yes"
-            >
-              Yes
-            </button>
-
-            <button
-              type="button"
-              class="answer-button"
-              data-answer="no"
-            >
-              No
-            </button>
-          </div>
-
-          <p class="privacy">
-            <span class="privacy-icon">🔒</span>
-            Your information is handled securely and used to help
-            connect you with available quote options.
-          </p>
+        <div class="buttons">
+          <button class="answer" data-answer="yes">Yes</button>
+          <button class="answer" data-answer="no">No</button>
         </div>
 
-        <div
-          id="responseMessage"
-          class="message"
-          role="status"
-          aria-live="polite"
-        ></div>
+        <div id="status" class="status">
+          Continue to see available roofing quote options.
+        </div>
+
+        <p class="disclaimer">
+          Roofing projects are not free. Prices, costs and possible savings
+          vary by property, location, materials and contractor.
+        </p>
       </div>
 
-      <div class="trust-row">
-        <div class="trust-item">
-          <span class="trust-title">Compare Quotes</span>
-          <span class="trust-text">
-            Review available options before deciding.
-          </span>
+      <div
+        class="compare"
+        id="compare"
+        aria-label="Interactive roof before and after comparison"
+      >
+        <img
+          src="images/roof-before.jpg"
+          alt="Roof before completed roofing work"
+        />
+
+        <div class="after-wrap" id="afterWrap">
+          <img
+            src="images/roof-after.jpg"
+            alt="Roof after completed roofing work"
+          />
         </div>
 
-        <div class="trust-item">
-          <span class="trust-title">Understand the Cost</span>
-          <span class="trust-text">
-            Get a clearer idea of local roofing prices.
-          </span>
-        </div>
+        <span class="label after-label">After</span>
+        <span class="label before-label">Before</span>
 
-        <div class="trust-item">
-          <span class="trust-title">Explore Possible Savings</span>
-          <span class="trust-text">
-            Results and pricing can vary by property and contractor.
-          </span>
-        </div>
+        <div class="slider-line" id="sliderLine"></div>
+        <div class="slider-handle" id="sliderHandle">↔</div>
+
+        <input
+          class="range"
+          id="range"
+          type="range"
+          min="0"
+          max="100"
+          value="50"
+          aria-label="Move to compare before and after"
+        />
       </div>
     </section>
 
-    <section class="section">
-      <div class="section-heading">
-        <h2>See the Difference a Roof Project Can Make</h2>
-
-        <p>
-          The images below are illustrative examples. Actual results
-          depend on the home, materials selected and work performed.
-        </p>
+    <section class="badges">
+      <div class="badge">
+        <div class="badge-icon">✓</div>
+        <div>
+          <strong>Secure Form</strong>
+          <span>Information handled securely</span>
+        </div>
       </div>
 
-      <div class="comparison">
-        <article class="roof-card before">
-          <div class="image-wrap">
-            <img
-              src="images/roof-before.jpg"
-              alt="Older residential roof before roofing work"
-            />
-            <span class="image-label">Before</span>
-          </div>
-
-          <div class="roof-content">
-            <h3>Worn or Aging Appearance</h3>
-            <p>
-              Visible wear may lead homeowners to explore repair or
-              replacement options and compare local costs.
-            </p>
-          </div>
-        </article>
-
-        <article class="roof-card after">
-          <div class="image-wrap">
-            <img
-              src="images/roof-after.jpg"
-              alt="Residential roof after completed roofing work"
-            />
-            <span class="image-label">After</span>
-          </div>
-
-          <div class="roof-content">
-            <h3>Updated Roof Appearance</h3>
-            <p>
-              Compare available materials, prices and quotes to find
-              an option suited to your home and budget.
-            </p>
-          </div>
-        </article>
+      <div class="badge">
+        <div class="badge-icon">✓</div>
+        <div>
+          <strong>Clear Quote Options</strong>
+          <span>Compare available prices and costs</span>
+        </div>
       </div>
 
-      <div class="benefits">
-        <article class="benefit">
-          <div class="benefit-icon">1</div>
-          <h3>Answer a Few Questions</h3>
-          <p>
-            Share basic details about your home and roofing needs.
-          </p>
-        </article>
-
-        <article class="benefit">
-          <div class="benefit-icon">2</div>
-          <h3>Review Quote Options</h3>
-          <p>
-            Explore available pricing and cost information in your area.
-          </p>
-        </article>
-
-        <article class="benefit">
-          <div class="benefit-icon">3</div>
-          <h3>Compare Before Deciding</h3>
-          <p>
-            Consider your options without promises of specific savings.
-          </p>
-        </article>
+      <div class="badge">
+        <div class="badge-icon">✓</div>
+        <div>
+          <strong>Local Roofing Options</strong>
+          <span>Availability varies by location</span>
+        </div>
       </div>
-
-      <section class="cta-card">
-        <h2>Start Comparing Roofing Quotes</h2>
-
-        <p>
-          Check available quote options and learn more about potential
-          roofing prices and costs for your property.
-        </p>
-
-        <a
-          class="cta-button"
-          href="/roofing-form"
-        >
-          See Available Quotes
-        </a>
-
-        <p class="disclosure">
-          Roofing projects and contractor services are not free.
-          Receiving or reviewing a quote does not guarantee a particular
-          price or savings. Actual costs, availability and results vary
-          based on the property, location, materials and contractor.
-        </p>
-      </section>
     </section>
-
-    <footer>
-      This page provides a way to request or compare roofing quote
-      options. It does not represent a government service and does not
-      promise specific pricing or savings.
-    </footer>
   </main>
 
   <script>
-    const buttons = document.querySelectorAll(".answer-button");
-    const message = document.getElementById("responseMessage");
+    const range = document.getElementById("range");
+    const afterWrap = document.getElementById("afterWrap");
+    const sliderLine = document.getElementById("sliderLine");
+    const sliderHandle = document.getElementById("sliderHandle");
 
-    function clearSelection() {
-      buttons.forEach((button) => {
-        button.classList.remove("selected");
-      });
+    function updateComparison(value) {
+      afterWrap.style.width = `${value}%`;
+      sliderLine.style.left = `${value}%`;
+      sliderHandle.style.left = `${value}%`;
     }
 
-    buttons.forEach((button) => {
+    range.addEventListener("input", (event) => {
+      updateComparison(event.target.value);
+    });
+
+    const answerButtons = document.querySelectorAll(".answer");
+    const status = document.getElementById("status");
+
+    answerButtons.forEach((button) => {
       button.addEventListener("click", () => {
-        clearSelection();
-        button.classList.add("selected");
+        answerButtons.forEach((item) => item.classList.remove("active"));
+        button.classList.add("active");
 
-        const answer = button.dataset.answer;
-
-        if (answer === "yes") {
-          message.className = "message success visible";
-          message.textContent =
-            "Great. Continue to review available roofing quote options.";
+        if (button.dataset.answer === "yes") {
+          status.textContent =
+            "Continue to see available roofing quote options.";
         } else {
-          message.className = "message info visible";
-          message.textContent =
-            "This quote comparison experience is intended for homeowners.";
+          status.textContent =
+            "This roofing quote experience is intended for homeowners.";
         }
+
+        status.classList.add("show");
       });
     });
+
+    updateComparison(50);
   </script>
 </body>
 </html>
