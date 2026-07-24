@@ -1,322 +1,648 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Debt Relief Eligibility Check</title>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
 
+  <title>Compare Roofing Quotes</title>
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-    font-family: Arial, Helvetica, sans-serif;
-    background:linear-gradient(180deg,#f8fafc 0%,#eef4fb 100%);
-    color:#162033;
-}
-
-.page{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:18px;
-}
-
-.card{
-    width:100%;
-    max-width:520px;
-    background:#fff;
-    text-align:center;
-    border-radius:26px;
-    overflow:hidden;
-    box-shadow:0 22px 55px rgba(15,23,42,.12);
-    border:1px solid #e7eef8;
-}
-
-.top-bar{
-    background:linear-gradient(90deg,#2f80ed,#56ccf2);
-    color:#fff;
-    font-size:15px;
-    font-weight:800;
-    padding:14px 10px;
-}
-
-.content{
-    padding:34px 28px 28px;
-}
-
-.kicker{
-    display:inline-block;
-    background:#ecfdf5;
-    color:#047857;
-    font-size:13px;
-    font-weight:900;
-    padding:8px 13px;
-    border-radius:999px;
-    margin-bottom:18px;
-}
-
-.headline{
-    font-size:28px;
-    line-height:1.18;
-    font-weight:900;
-    text-transform:uppercase;
-    margin-bottom:18px;
-    color:#111827;
-}
-
-.headline span{
-    display:block;
-    color:#2f80ed;
-    font-size:42px;
-    margin:6px 0;
-}
-
-.subtext{
-    font-size:15px;
-    line-height:1.45;
-    color:#475569;
-    font-weight:700;
-    margin-bottom:20px;
-}
-
-.benefits{
-    background:#f0fdf4;
-    border:1px solid #bbf7d0;
-    border-radius:16px;
-    padding:14px;
-    margin-bottom:24px;
-    display:grid;
-    gap:8px;
-    text-align:left;
-    font-size:14px;
-    font-weight:800;
-    color:#14532d;
-}
-
-.buttons{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:14px;
-    margin-bottom:16px;
-}
-
-button{
-    border:none;
-    cursor:pointer;
-    border-radius:14px;
-    padding:16px 10px;
-    font-size:21px;
-    font-weight:900;
-    text-transform:uppercase;
-    transition:.15s;
-}
-
-button:hover{
-    transform:translateY(-2px);
-}
-
-.yes{
-    background:linear-gradient(180deg,#34d399,#10b981);
-    color:#fff;
-    box-shadow:0 8px 20px rgba(16,185,129,.32);
-}
-
-.no{
-    background:#edf2f7;
-    color:#334155;
-    box-shadow:inset 0 0 0 1px #dbe5ef;
-}
-
-.continue{
-    font-size:13px;
-    font-weight:800;
-    color:#64748b;
-    margin-bottom:22px;
-}
-
-.rating-box{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:8px;
-    margin-bottom:22px;
-    font-size:15px;
-    font-weight:800;
-    color:#334155;
-}
-
-.stars{
-    color:#f59e0b;
-    letter-spacing:1px;
-    font-size:19px;
-}
-
-.badges{
-    display:flex;
-    justify-content:center;
-    gap:8px;
-    flex-wrap:wrap;
-    margin-bottom:18px;
-}
-
-.badge{
-    background:#f8fafc;
-    border:1px solid #e2e8f0;
-    color:#334155;
-    padding:8px 12px;
-    border-radius:999px;
-    font-size:12px;
-    font-weight:900;
-}
-
-.loader{
-    display:none;
-    margin-top:12px;
-    color:#2f80ed;
-    font-size:15px;
-    font-weight:900;
-}
-
-.links{
-    font-size:12px;
-    font-weight:700;
-    margin-bottom:18px;
-}
-
-.links a{
-    color:#2563eb;
-    margin:0 8px;
-    text-decoration:underline;
-}
-
-.footer{
-    background:#f8fafc;
-    color:#64748b;
-    font-size:10px;
-    line-height:1.45;
-    padding:16px 22px 24px;
-    border-top:1px solid #e2e8f0;
-}
-
-@media(max-width:480px){
-    .page{
-        padding:10px;
-        align-items:flex-start;
+  <style>
+    :root {
+      --blue: #2395d3;
+      --blue-dark: #1478ad;
+      --navy: #17283b;
+      --green: #249a5a;
+      --gray: #65717e;
+      --light-gray: #f3f6f8;
+      --border: #d9e1e7;
+      --white: #ffffff;
+      --shadow: 0 12px 35px rgba(20, 55, 80, 0.12);
     }
 
-    .content{
-        padding:28px 20px 24px;
+    * {
+      box-sizing: border-box;
     }
 
-    .headline{
-        font-size:23px;
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, #eef8fd 0, transparent 35%),
+        var(--white);
+      color: var(--navy);
+      font-family: Arial, Helvetica, sans-serif;
     }
 
-    .headline span{
-        font-size:36px;
+    button,
+    input {
+      font: inherit;
     }
 
-    button{
-        font-size:18px;
-        padding:15px 8px;
+    .page {
+      width: min(1080px, 100%);
+      margin: 0 auto;
+      padding: 28px 18px 60px;
     }
 
-    .top-bar{
-        font-size:13px;
+    .top-card {
+      overflow: hidden;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
     }
-}
-</style>
+
+    .hero {
+      padding: 38px 24px 30px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 9px 15px;
+      background: #dff3ff;
+      border-radius: 7px;
+      color: #123954;
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    h1 {
+      max-width: 800px;
+      margin: 0 auto 13px;
+      font-size: clamp(32px, 5vw, 53px);
+      line-height: 1.06;
+      letter-spacing: -0.04em;
+    }
+
+    .hero-copy {
+      max-width: 690px;
+      margin: 0 auto 26px;
+      color: var(--gray);
+      font-size: 19px;
+      line-height: 1.55;
+    }
+
+    .question-box {
+      width: min(630px, 100%);
+      margin: 0 auto;
+      padding: 25px;
+      background: var(--light-gray);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+    }
+
+    .question {
+      margin: 0 0 19px;
+      font-size: 26px;
+      font-weight: 800;
+    }
+
+    .answer-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .answer-button {
+      min-height: 57px;
+      padding: 13px 22px;
+      background: var(--white);
+      border: 2px solid var(--blue);
+      border-radius: 8px;
+      color: var(--navy);
+      cursor: pointer;
+      font-weight: 800;
+      transition:
+        transform 0.15s ease,
+        background-color 0.15s ease,
+        color 0.15s ease;
+    }
+
+    .answer-button:hover,
+    .answer-button:focus-visible {
+      background: var(--blue);
+      color: var(--white);
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .answer-button.selected {
+      background: var(--blue);
+      color: var(--white);
+    }
+
+    .privacy {
+      margin: 16px 0 0;
+      color: var(--gray);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .privacy-icon {
+      margin-right: 4px;
+    }
+
+    .message {
+      display: none;
+      width: min(630px, 100%);
+      margin: 18px auto 0;
+      padding: 15px 18px;
+      border-radius: 9px;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .message.visible {
+      display: block;
+    }
+
+    .message.success {
+      background: #e8f8ef;
+      border: 1px solid #aadabe;
+      color: #17673c;
+    }
+
+    .message.info {
+      background: #edf6fc;
+      border: 1px solid #b8d9ed;
+      color: #185373;
+    }
+
+    .trust-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--border);
+    }
+
+    .trust-item {
+      padding: 20px 16px;
+      text-align: center;
+    }
+
+    .trust-item + .trust-item {
+      border-left: 1px solid var(--border);
+    }
+
+    .trust-title {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 17px;
+      font-weight: 800;
+    }
+
+    .trust-text {
+      color: var(--gray);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .section {
+      padding: 58px 0 0;
+    }
+
+    .section-heading {
+      max-width: 710px;
+      margin: 0 auto 28px;
+      text-align: center;
+    }
+
+    .section-heading h2 {
+      margin: 0 0 12px;
+      font-size: clamp(29px, 4vw, 42px);
+      letter-spacing: -0.035em;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--gray);
+      font-size: 18px;
+      line-height: 1.55;
+    }
+
+    .comparison {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .roof-card {
+      overflow: hidden;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .image-wrap {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background: #dfe7ec;
+    }
+
+    .image-wrap img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .before img {
+      filter: saturate(0.65) contrast(0.9) brightness(0.82);
+    }
+
+    .after img {
+      filter: saturate(1.15) contrast(1.05);
+    }
+
+    .image-label {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      color: var(--white);
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .before .image-label {
+      background: #c63e39;
+    }
+
+    .after .image-label {
+      background: var(--green);
+    }
+
+    .roof-content {
+      padding: 22px;
+    }
+
+    .roof-content h3 {
+      margin: 0 0 8px;
+      font-size: 22px;
+    }
+
+    .roof-content p {
+      margin: 0;
+      color: var(--gray);
+      line-height: 1.55;
+    }
+
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 26px;
+    }
+
+    .benefit {
+      padding: 23px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      text-align: center;
+    }
+
+    .benefit-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 13px;
+      background: #e4f5fe;
+      border-radius: 50%;
+      color: var(--blue-dark);
+      font-size: 22px;
+      font-weight: 900;
+    }
+
+    .benefit h3 {
+      margin: 0 0 7px;
+      font-size: 18px;
+    }
+
+    .benefit p {
+      margin: 0;
+      color: var(--gray);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .cta-card {
+      margin-top: 48px;
+      padding: 36px 24px;
+      background: linear-gradient(135deg, var(--navy), #245679);
+      border-radius: 21px;
+      color: var(--white);
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .cta-card h2 {
+      margin: 0 0 10px;
+      font-size: clamp(28px, 4vw, 40px);
+    }
+
+    .cta-card p {
+      max-width: 680px;
+      margin: 0 auto 21px;
+      color: #d9e8f3;
+      font-size: 17px;
+      line-height: 1.55;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 16px 28px;
+      background: var(--green);
+      border: 0;
+      border-radius: 9px;
+      color: var(--white);
+      cursor: pointer;
+      font-weight: 900;
+      text-decoration: none;
+      transition:
+        transform 0.15s ease,
+        filter 0.15s ease;
+    }
+
+    .cta-button:hover,
+    .cta-button:focus-visible {
+      filter: brightness(1.07);
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .disclosure {
+      max-width: 760px;
+      margin: 17px auto 0;
+      color: #c5d7e4;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    footer {
+      padding-top: 34px;
+      color: var(--gray);
+      font-size: 12px;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        padding: 15px 12px 40px;
+      }
+
+      .hero {
+        padding: 28px 17px 24px;
+      }
+
+      .question-box {
+        padding: 20px 15px;
+      }
+
+      .question {
+        font-size: 22px;
+      }
+
+      .answer-row,
+      .comparison,
+      .benefits {
+        grid-template-columns: 1fr;
+      }
+
+      .trust-row {
+        grid-template-columns: 1fr;
+      }
+
+      .trust-item + .trust-item {
+        border-top: 1px solid var(--border);
+        border-left: 0;
+      }
+    }
+  </style>
 </head>
 
 <body>
-
-<div class="page">
-    <div class="card">
-
-        <div class="top-bar">
-            2025 Debt Relief Eligibility Check
+  <main class="page">
+    <section class="top-card">
+      <div class="hero">
+        <div class="eyebrow">
+          Thinking About Replacing Your Roof?
         </div>
 
-        <div class="content">
+        <h1>
+          Compare Available Roofing Quotes in Your Area
+        </h1>
 
-            <div class="kicker">
-                More than 3,235 people lowered their monthly debt payments.
-            </div>
+        <p class="hero-copy">
+          Review quote options from local roofing professionals and
+          compare price, cost and possible savings before choosing
+          how to move forward.
+        </p>
 
-            <h1 class="headline">
-                Do You Have More Than
-                <span>$10,000</span>
-                In Credit Card Debt or Medical Loans?
-            </h1>
+        <div class="question-box">
+          <p class="question">Do you own the home?</p>
 
-            <div class="subtext">
-                Check whether you may qualify for debt relief options that could help make your monthly program payment more manageable.
-            </div>
+          <div class="answer-row">
+            <button
+              type="button"
+              class="answer-button"
+              data-answer="yes"
+            >
+              Yes
+            </button>
 
-            <div class="benefits">
-                <div>✓ Takes about 60 seconds</div>
-                <div>✓ Free Eligibility Check.</div>
-                <div>✓ You'il stop suffering with high monthly payments.</div>
-                <div>✓ You may be missing an option worth exploring.</div>
-            </div>
+            <button
+              type="button"
+              class="answer-button"
+              data-answer="no"
+            >
+              No
+            </button>
+          </div>
 
-            <div class="buttons">
-                <button class="yes" onclick="goOffer()">Yes</button>
-                <button class="no" onclick="goOffer()">No</button>
-            </div>
-
-            <div class="continue">
-                Choose an option now to continue
-            </div>
-
-            <div class="rating-box">
-                <span>Excellent</span>
-                <span class="stars">★★★★★</span>
-                <span>4.8 Average Rating</span>
-            </div>
-
-            <div class="badges">
-                <div class="badge">🔒 Secure</div>
-                <div class="badge">✓ Confidential</div>
-                <div class="badge">⚡ Fast Check</div>
-            </div>
-
-            <div class="loader" id="loader">
-                Checking available options...
-            </div>
-
-            <div class="links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Use</a>
-            </div>
-
+          <p class="privacy">
+            <span class="privacy-icon">🔒</span>
+            Your information is handled securely and used to help
+            connect you with available quote options.
+          </p>
         </div>
 
-        <div class="footer">
-            This site is an advertisement. Results vary by individual situation.
-            We do not guarantee outcomes. Not all applicants qualify. Applies to qualifying unsecured debts only.
+        <div
+          id="responseMessage"
+          class="message"
+          role="status"
+          aria-live="polite"
+        ></div>
+      </div>
+
+      <div class="trust-row">
+        <div class="trust-item">
+          <span class="trust-title">Compare Quotes</span>
+          <span class="trust-text">
+            Review available options before deciding.
+          </span>
         </div>
 
-    </div>
-</div>
+        <div class="trust-item">
+          <span class="trust-title">Understand the Cost</span>
+          <span class="trust-text">
+            Get a clearer idea of local roofing prices.
+          </span>
+        </div>
 
-<script>
-const OFFER_URL = "https://trackrt.helpingpeoplegetahead.com/click";
+        <div class="trust-item">
+          <span class="trust-title">Explore Possible Savings</span>
+          <span class="trust-text">
+            Results and pricing can vary by property and contractor.
+          </span>
+        </div>
+      </div>
+    </section>
 
-function goOffer(){
-    document.getElementById("loader").style.display = "block";
+    <section class="section">
+      <div class="section-heading">
+        <h2>See the Difference a Roof Project Can Make</h2>
 
-    setTimeout(function(){
-        window.location.href = OFFER_URL;
-    }, 500);
-}
-</script>
+        <p>
+          The images below are illustrative examples. Actual results
+          depend on the home, materials selected and work performed.
+        </p>
+      </div>
 
+      <div class="comparison">
+        <article class="roof-card before">
+          <div class="image-wrap">
+            <img
+              src="images/roof-before.jpg"
+              alt="Older residential roof before roofing work"
+            />
+            <span class="image-label">Before</span>
+          </div>
+
+          <div class="roof-content">
+            <h3>Worn or Aging Appearance</h3>
+            <p>
+              Visible wear may lead homeowners to explore repair or
+              replacement options and compare local costs.
+            </p>
+          </div>
+        </article>
+
+        <article class="roof-card after">
+          <div class="image-wrap">
+            <img
+              src="images/roof-after.jpg"
+              alt="Residential roof after completed roofing work"
+            />
+            <span class="image-label">After</span>
+          </div>
+
+          <div class="roof-content">
+            <h3>Updated Roof Appearance</h3>
+            <p>
+              Compare available materials, prices and quotes to find
+              an option suited to your home and budget.
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <div class="benefits">
+        <article class="benefit">
+          <div class="benefit-icon">1</div>
+          <h3>Answer a Few Questions</h3>
+          <p>
+            Share basic details about your home and roofing needs.
+          </p>
+        </article>
+
+        <article class="benefit">
+          <div class="benefit-icon">2</div>
+          <h3>Review Quote Options</h3>
+          <p>
+            Explore available pricing and cost information in your area.
+          </p>
+        </article>
+
+        <article class="benefit">
+          <div class="benefit-icon">3</div>
+          <h3>Compare Before Deciding</h3>
+          <p>
+            Consider your options without promises of specific savings.
+          </p>
+        </article>
+      </div>
+
+      <section class="cta-card">
+        <h2>Start Comparing Roofing Quotes</h2>
+
+        <p>
+          Check available quote options and learn more about potential
+          roofing prices and costs for your property.
+        </p>
+
+        <a
+          class="cta-button"
+          href="/roofing-form"
+        >
+          See Available Quotes
+        </a>
+
+        <p class="disclosure">
+          Roofing projects and contractor services are not free.
+          Receiving or reviewing a quote does not guarantee a particular
+          price or savings. Actual costs, availability and results vary
+          based on the property, location, materials and contractor.
+        </p>
+      </section>
+    </section>
+
+    <footer>
+      This page provides a way to request or compare roofing quote
+      options. It does not represent a government service and does not
+      promise specific pricing or savings.
+    </footer>
+  </main>
+
+  <script>
+    const buttons = document.querySelectorAll(".answer-button");
+    const message = document.getElementById("responseMessage");
+
+    function clearSelection() {
+      buttons.forEach((button) => {
+        button.classList.remove("selected");
+      });
+    }
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        clearSelection();
+        button.classList.add("selected");
+
+        const answer = button.dataset.answer;
+
+        if (answer === "yes") {
+          message.className = "message success visible";
+          message.textContent =
+            "Great. Continue to review available roofing quote options.";
+        } else {
+          message.className = "message info visible";
+          message.textContent =
+            "This quote comparison experience is intended for homeowners.";
+        }
+      });
+    });
+  </script>
 </body>
 </html>
