@@ -8,40 +8,38 @@
 
   <style>
     :root {
-      --navy: #17324d;
-      --navy-dark: #0d2235;
-      --blue: #2f80ed;
-      --blue-soft: #eaf3ff;
-      --green: #2ca66f;
-      --green-soft: #eaf8f1;
-      --gold: #f4b942;
-      --text: #243746;
-      --muted: #6d7d8a;
-      --line: #dce5eb;
-      --background: #f4f8fb;
+      --navy: #14324a;
+      --navy-dark: #0b2133;
+      --blue: #1976d2;
+      --blue-dark: #105ba3;
+      --blue-light: #eaf4ff;
+      --green: #249b68;
+      --green-light: #e9f8f1;
+      --gold: #f4b740;
+      --red: #c94d4d;
+      --text: #263746;
+      --muted: #6f7f8c;
+      --border: #dbe4ea;
+      --background: #f3f7fa;
       --white: #ffffff;
-      --danger: #c94f4f;
-      --shadow: 0 18px 50px rgba(20, 50, 75, 0.14);
+      --shadow: 0 18px 50px rgba(14, 44, 67, 0.14);
     }
 
     * {
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       margin: 0;
       min-height: 100vh;
+      padding: 24px 14px;
       background:
-        radial-gradient(circle at top left, #e5f3ff 0, transparent 35%),
-        linear-gradient(180deg, #f9fcfe 0%, var(--background) 100%);
+        radial-gradient(circle at top left, #dcefff 0%, transparent 34%),
+        linear-gradient(180deg, #fbfdff 0%, var(--background) 100%);
       color: var(--text);
       font-family:
-        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
+        Inter, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Arial, sans-serif;
     }
 
     button,
@@ -50,19 +48,19 @@
     }
 
     .page {
-      width: min(980px, calc(100% - 28px));
-      margin: 28px auto;
+      width: min(100%, 980px);
+      margin: 0 auto;
     }
 
-    .card {
+    .landing-card {
       overflow: hidden;
       background: var(--white);
-      border: 1px solid rgba(23, 50, 77, 0.08);
+      border: 1px solid rgba(20, 50, 74, 0.08);
       border-radius: 24px;
       box-shadow: var(--shadow);
     }
 
-    .main {
+    .main-content {
       display: grid;
       grid-template-columns: 1fr 0.95fr;
       gap: 34px;
@@ -74,16 +72,16 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      margin-bottom: 16px;
+      margin-bottom: 15px;
       padding: 8px 13px;
       border-radius: 999px;
-      background: var(--blue-soft);
-      color: #195ea8;
+      background: var(--blue-light);
+      color: var(--blue-dark);
       font-size: 13px;
       font-weight: 800;
     }
 
-    .eyebrow-check {
+    .eyebrow-icon {
       width: 20px;
       height: 20px;
       display: grid;
@@ -96,10 +94,10 @@
 
     h1 {
       margin: 0;
-      max-width: 520px;
+      max-width: 540px;
       color: var(--navy-dark);
-      font-size: clamp(34px, 5vw, 54px);
-      line-height: 1.02;
+      font-size: clamp(35px, 5vw, 54px);
+      line-height: 1.03;
       letter-spacing: -0.045em;
     }
 
@@ -107,32 +105,36 @@
       color: var(--blue);
     }
 
-    .lead {
-      max-width: 550px;
-      margin: 18px 0 24px;
+    .subtitle {
+      max-width: 540px;
+      margin: 17px 0 23px;
       color: var(--muted);
-      font-size: 18px;
+      font-size: 17px;
       line-height: 1.55;
     }
 
-    .question {
-      margin-bottom: 12px;
+    .subtitle strong {
       color: var(--navy);
-      font-size: 21px;
+    }
+
+    .question {
+      margin: 0 0 11px;
+      color: var(--navy);
+      font-size: 20px;
       font-weight: 800;
     }
 
-    .answers {
+    .answer-buttons {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
+      gap: 11px;
     }
 
-    .answer {
-      min-height: 54px;
+    .answer-button {
+      min-height: 53px;
       padding: 12px 18px;
-      border: 2px solid #bcd8f5;
-      border-radius: 12px;
+      border: 2px solid #b9d7f1;
+      border-radius: 11px;
       background: var(--white);
       color: var(--navy);
       cursor: pointer;
@@ -144,14 +146,14 @@
         color 0.15s ease;
     }
 
-    .answer:hover,
-    .answer:focus-visible {
+    .answer-button:hover,
+    .answer-button:focus-visible {
       transform: translateY(-1px);
       border-color: var(--blue);
       outline: none;
     }
 
-    .answer.active {
+    .answer-button.active {
       border-color: var(--blue);
       background: var(--blue);
       color: var(--white);
@@ -161,38 +163,42 @@
       display: none;
       margin-top: 12px;
       padding: 12px 14px;
-      border: 1px solid #bfe6d1;
+      border: 1px solid #b8e2cc;
       border-radius: 10px;
-      background: var(--green-soft);
-      color: #176640;
-      font-size: 14px;
+      background: var(--green-light);
+      color: #17633f;
+      font-size: 13px;
       font-weight: 700;
+      line-height: 1.4;
     }
 
-    .status.show {
+    .status.visible {
       display: block;
     }
 
     .disclaimer {
-      margin: 14px 0 0;
+      margin: 13px 0 0;
       color: var(--muted);
-      font-size: 12px;
-      line-height: 1.55;
+      font-size: 11px;
+      line-height: 1.5;
     }
 
-    .compare {
+    /* BEFORE / AFTER */
+
+    .comparison {
       position: relative;
       width: 100%;
       aspect-ratio: 4 / 3;
       overflow: hidden;
-      border: 1px solid rgba(23, 50, 77, 0.12);
+      border: 1px solid rgba(20, 50, 74, 0.12);
       border-radius: 18px;
       background: #dfe8ee;
-      box-shadow: 0 15px 35px rgba(18, 47, 71, 0.18);
+      box-shadow: 0 14px 35px rgba(15, 45, 68, 0.18);
       user-select: none;
+      touch-action: none;
     }
 
-    .compare img {
+    .comparison-image {
       position: absolute;
       inset: 0;
       width: 100%;
@@ -206,60 +212,54 @@
       z-index: 1;
     }
 
-    .after-wrap {
-      position: absolute;
-      inset: 0 auto 0 0;
+    .after-image {
       z-index: 2;
-      width: 0%;
-      overflow: hidden;
+      clip-path: inset(0 50% 0 0);
     }
 
-    .after-wrap img {
-      width: 100%;
-      min-width: 100%;
-      max-width: none;
-    }
-
-    .label {
+    .image-label {
       position: absolute;
       top: 14px;
       z-index: 5;
       padding: 7px 11px;
       border-radius: 999px;
       color: var(--white);
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 900;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.07em;
       text-transform: uppercase;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16);
-    }
-
-    .before-label {
-      right: 14px;
-      background: rgba(190, 65, 65, 0.94);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
     }
 
     .after-label {
       left: 14px;
-      background: rgba(44, 166, 111, 0.95);
+      background: rgba(36, 155, 104, 0.94);
+    }
+
+    .before-label {
+      right: 14px;
+      background: rgba(201, 77, 77, 0.94);
     }
 
     .slider-line {
       position: absolute;
       top: 0;
       bottom: 0;
-      left: 0%;
+      left: 50%;
       z-index: 6;
       width: 4px;
       background: var(--white);
       transform: translateX(-50%);
-      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12);
+      box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.1),
+        0 0 12px rgba(0, 0, 0, 0.15);
+      pointer-events: none;
     }
 
     .slider-handle {
       position: absolute;
       top: 50%;
-      left: 0%;
+      left: 50%;
       z-index: 7;
       width: 52px;
       height: 52px;
@@ -269,14 +269,14 @@
       border-radius: 50%;
       background: var(--blue);
       color: var(--white);
-      font-size: 19px;
+      font-size: 20px;
       font-weight: 900;
       transform: translate(-50%, -50%);
-      box-shadow: 0 7px 18px rgba(0, 0, 0, 0.24);
+      box-shadow: 0 7px 18px rgba(0, 0, 0, 0.26);
       pointer-events: none;
     }
 
-    .range {
+    .comparison-range {
       position: absolute;
       inset: 0;
       z-index: 8;
@@ -287,28 +287,31 @@
       cursor: ew-resize;
     }
 
-    .helper {
+    .drag-message {
       position: absolute;
-      right: 14px;
-      bottom: 14px;
+      right: 13px;
+      bottom: 13px;
       z-index: 5;
       padding: 7px 10px;
       border-radius: 8px;
-      background: rgba(13, 34, 53, 0.78);
+      background: rgba(11, 33, 51, 0.78);
       color: var(--white);
       font-size: 11px;
       font-weight: 700;
-      backdrop-filter: blur(5px);
+      backdrop-filter: blur(4px);
+      pointer-events: none;
     }
 
-    .trust {
+    /* TRUST BADGES */
+
+    .trust-badges {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      border-top: 1px solid var(--line);
+      border-top: 1px solid var(--border);
       background: #fbfdff;
     }
 
-    .trust-item {
+    .trust-badge {
       display: flex;
       align-items: center;
       gap: 11px;
@@ -316,31 +319,31 @@
       padding: 18px;
     }
 
-    .trust-item + .trust-item {
-      border-left: 1px solid var(--line);
+    .trust-badge + .trust-badge {
+      border-left: 1px solid var(--border);
     }
 
-    .trust-icon {
-      width: 38px;
-      height: 38px;
+    .badge-icon {
+      width: 39px;
+      height: 39px;
       display: grid;
-      flex: 0 0 38px;
+      flex: 0 0 39px;
       place-items: center;
       border-radius: 50%;
-      background: var(--green-soft);
+      background: var(--green-light);
       color: var(--green);
       font-size: 18px;
       font-weight: 900;
     }
 
-    .trust-title {
+    .badge-title {
       display: block;
       color: var(--navy);
       font-size: 14px;
       font-weight: 850;
     }
 
-    .trust-copy {
+    .badge-description {
       display: block;
       margin-top: 3px;
       color: var(--muted);
@@ -348,13 +351,13 @@
       line-height: 1.35;
     }
 
-    .review-strip {
+    .confidence-strip {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 12px;
       padding: 15px 20px;
-      border-top: 1px solid var(--line);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
       background: var(--navy-dark);
       color: var(--white);
       text-align: center;
@@ -362,55 +365,55 @@
 
     .stars {
       color: var(--gold);
-      font-size: 18px;
+      font-size: 17px;
       letter-spacing: 2px;
     }
 
-    .review-copy {
+    .confidence-text {
       font-size: 13px;
-      font-weight: 700;
+      font-weight: 750;
     }
 
-    .review-copy span {
-      color: #c8d6e2;
+    .confidence-text span {
+      color: #c6d5df;
       font-weight: 500;
     }
 
-    .footer-note {
-      margin: 14px auto 0;
+    .footer-disclosure {
       max-width: 820px;
+      margin: 14px auto 0;
+      padding: 0 10px;
       color: var(--muted);
-      font-size: 11px;
+      font-size: 10px;
       line-height: 1.5;
       text-align: center;
     }
 
     @media (max-width: 760px) {
-      .page {
-        width: min(100% - 18px, 980px);
-        margin: 10px auto;
+      body {
+        padding: 10px 9px 20px;
       }
 
-      .main {
+      .main-content {
         grid-template-columns: 1fr;
-        gap: 26px;
-        padding: 25px 18px;
+        gap: 25px;
+        padding: 24px 18px;
       }
 
-      .compare {
+      .comparison {
         order: -1;
       }
 
-      .trust {
+      .trust-badges {
         grid-template-columns: 1fr;
       }
 
-      .trust-item + .trust-item {
-        border-top: 1px solid var(--line);
+      .trust-badge + .trust-badge {
+        border-top: 1px solid var(--border);
         border-left: 0;
       }
 
-      .review-strip {
+      .confidence-strip {
         flex-direction: column;
         gap: 5px;
       }
@@ -420,29 +423,33 @@
 
 <body>
   <div class="page">
-    <main class="card">
-      <section class="main">
-        <div class="copy">
+    <main class="landing-card">
+
+      <section class="main-content">
+
+        <div class="copy-section">
           <div class="eyebrow">
-            <span class="eyebrow-check">✓</span>
+            <span class="eyebrow-icon">✓</span>
             Roofing Quote Comparison
           </div>
 
           <h1>
-            See What a <span>Roof Project</span> Could Look Like
+            Compare Roofing Quotes &
+            <span>You Could Save</span>
           </h1>
 
-          <p class="lead">
-            Compare available roofing quotes, prices and costs from local
-            professionals before deciding what works for your home.
+          <p class="subtitle">
+            Compare available roofing <strong>quotes, prices and costs</strong>
+            from local professionals. It only takes a few minutes to get
+            started and explore possible savings.
           </p>
 
-          <div class="question">Do you own the home?</div>
+          <p class="question">Do you own the home?</p>
 
-          <div class="answers">
+          <div class="answer-buttons">
             <button
               type="button"
-              class="answer"
+              class="answer-button"
               data-answer="yes"
             >
               Yes
@@ -450,7 +457,7 @@
 
             <button
               type="button"
-              class="answer"
+              class="answer-button"
               data-answer="no"
             >
               No
@@ -472,128 +479,163 @@
         </div>
 
         <div
-          class="compare"
+          class="comparison"
           aria-label="Interactive roof before and after comparison"
         >
+          <!-- 1.png = BEFORE -->
           <img
-            class="before-image"
+            class="comparison-image before-image"
             src="1.png"
             alt="Roof before roofing work"
           />
 
-          <div
-            class="after-wrap"
-            id="afterWrap"
-          >
-            <img
-              src="2.png"
-              alt="Roof after roofing work"
-            />
-          </div>
+          <!-- 2.png = AFTER -->
+          <img
+            id="afterImage"
+            class="comparison-image after-image"
+            src="2.png"
+            alt="Roof after roofing work"
+          />
 
-          <span class="label before-label">Before</span>
-          <span class="label after-label">After</span>
+          <span class="image-label after-label">After</span>
+          <span class="image-label before-label">Before</span>
 
           <div
-            class="slider-line"
             id="sliderLine"
+            class="slider-line"
           ></div>
 
           <div
-            class="slider-handle"
             id="sliderHandle"
+            class="slider-handle"
           >
             ↔
           </div>
 
-          <div class="helper">Drag to compare</div>
+          <div class="drag-message">
+            Drag to compare
+          </div>
 
           <input
-            class="range"
-            id="range"
+            id="comparisonRange"
+            class="comparison-range"
             type="range"
             min="0"
             max="100"
-            value="0"
-            aria-label="Move to reveal the after image"
+            value="50"
+            aria-label="Move slider to compare before and after"
           />
         </div>
+
       </section>
 
-      <section class="trust">
-        <div class="trust-item">
-          <div class="trust-icon">✓</div>
+      <section class="trust-badges">
+
+        <div class="trust-badge">
+          <div class="badge-icon">✓</div>
 
           <div>
-            <span class="trust-title">Secure Form</span>
-            <span class="trust-copy">
-              Information is handled securely.
+            <span class="badge-title">Secure Information</span>
+            <span class="badge-description">
+              Your information is handled securely.
             </span>
           </div>
         </div>
 
-        <div class="trust-item">
-          <div class="trust-icon">✓</div>
+        <div class="trust-badge">
+          <div class="badge-icon">✓</div>
 
           <div>
-            <span class="trust-title">Clear Quote Options</span>
-            <span class="trust-copy">
-              Compare available prices and costs.
+            <span class="badge-title">Clear Quote Comparison</span>
+            <span class="badge-description">
+              Review available prices and costs.
             </span>
           </div>
         </div>
 
-        <div class="trust-item">
-          <div class="trust-icon">✓</div>
+        <div class="trust-badge">
+          <div class="badge-icon">✓</div>
 
           <div>
-            <span class="trust-title">Local Availability</span>
-            <span class="trust-copy">
-              Options may vary by location.
+            <span class="badge-title">Local Roofing Options</span>
+            <span class="badge-description">
+              Availability may vary by location.
             </span>
           </div>
         </div>
+
       </section>
 
-      <section class="review-strip">
-        <div class="stars">★★★★★</div>
+      <section class="confidence-strip">
+        <div class="stars" aria-hidden="true">
+          ★★★★★
+        </div>
 
-        <div class="review-copy">
-          Built to help homeowners compare roofing options
-          <span>without promises of specific pricing or savings.</span>
+        <div class="confidence-text">
+          A simple way to compare roofing options
+          <span>before making a decision.</span>
         </div>
       </section>
+
     </main>
 
-    <p class="footer-note">
-      Images are illustrative. Actual results vary. This page does not
-      represent a government service and does not guarantee a particular
-      quote, price, cost or savings.
+    <p class="footer-disclosure">
+      Images are illustrative. Actual results may vary. This website helps
+      homeowners explore available roofing quote options. It does not
+      guarantee a particular price, cost, contractor, result or amount of
+      savings.
     </p>
   </div>
 
   <script>
-    const range = document.getElementById("range");
-    const afterWrap = document.getElementById("afterWrap");
-    const sliderLine = document.getElementById("sliderLine");
-    const sliderHandle = document.getElementById("sliderHandle");
+    const comparisonRange =
+      document.getElementById("comparisonRange");
+
+    const afterImage =
+      document.getElementById("afterImage");
+
+    const sliderLine =
+      document.getElementById("sliderLine");
+
+    const sliderHandle =
+      document.getElementById("sliderHandle");
 
     function updateComparison(value) {
-      const safeValue = Math.max(0, Math.min(100, Number(value)));
+      const position = Math.max(
+        0,
+        Math.min(100, Number(value))
+      );
 
-      afterWrap.style.width = `${safeValue}%`;
-      sliderLine.style.left = `${safeValue}%`;
-      sliderHandle.style.left = `${safeValue}%`;
+      const hiddenRightSide = 100 - position;
+
+      afterImage.style.clipPath =
+        `inset(0 ${hiddenRightSide}% 0 0)`;
+
+      sliderLine.style.left =
+        `${position}%`;
+
+      sliderHandle.style.left =
+        `${position}%`;
     }
 
-    range.addEventListener("input", function (event) {
-      updateComparison(event.target.value);
-    });
+    comparisonRange.addEventListener(
+      "input",
+      function (event) {
+        updateComparison(event.target.value);
+      }
+    );
 
-    updateComparison(0);
+    /*
+      El comparador comienza en el centro:
+      50% AFTER y 50% BEFORE.
+    */
+    updateComparison(50);
 
-    const answerButtons = document.querySelectorAll(".answer");
-    const status = document.getElementById("status");
+    const answerButtons =
+      document.querySelectorAll(".answer-button");
+
+    const status =
+      document.getElementById("status");
 
     answerButtons.forEach(function (button) {
       button.addEventListener("click", function () {
@@ -605,13 +647,13 @@
 
         if (button.dataset.answer === "yes") {
           status.textContent =
-            "Great. Continue to review available roofing quote options.";
+            "Great — continue to explore available roofing quote options.";
         } else {
           status.textContent =
-            "This roofing quote experience is intended for homeowners.";
+            "This roofing quote comparison is intended for homeowners.";
         }
 
-        status.classList.add("show");
+        status.classList.add("visible");
       });
     });
   </script>
