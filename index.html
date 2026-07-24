@@ -562,8 +562,8 @@
           </h1>
 
           <p class="subtitle">
-            Simply by entering their ZIP code, which takes
-            <strong>just two minutes.</strong>
+            Answer one quick question to view your available options.
+            <strong>It only takes a few seconds.</strong>
           </p>
         </div>
 
@@ -591,35 +591,6 @@
               >
                 ✕ No
               </button>
-            </div>
-
-            <div id="zipArea" class="zip-area">
-              <label class="zip-label" for="zipCode">
-                Enter your ZIP code
-              </label>
-
-              <p class="privacy-note">
-  🔒 Your information is kept secure and private throughout the process.
-</p>
-              <div class="zip-row">
-                <input
-                  id="zipCode"
-                  class="zip-input"
-                  type="text"
-                  inputmode="numeric"
-                  maxlength="5"
-                  autocomplete="postal-code"
-                  placeholder="ZIP code"
-                />
-
-                <button
-                  id="continueButton"
-                  type="button"
-                  class="continue-button"
-                >
-                  Continue
-                </button>
-              </div>
             </div>
 
             <div
@@ -733,20 +704,10 @@
 
     updateComparison(50);
 
+    const OFFER_URL = "https://example.com";
+
     const quizButtons =
       document.querySelectorAll(".quiz-button");
-
-    const zipArea =
-      document.getElementById("zipArea");
-
-    const zipCode =
-      document.getElementById("zipCode");
-
-    const continueButton =
-      document.getElementById("continueButton");
-
-    const message =
-      document.getElementById("message");
 
     quizButtons.forEach(function (button) {
       button.addEventListener("click", function () {
@@ -756,52 +717,10 @@
 
         button.classList.add("active");
 
-        message.className = "message";
-        message.textContent = "";
-
-        if (button.dataset.answer === "yes") {
-          zipArea.classList.add("visible");
-
-          setTimeout(function () {
-            zipCode.focus();
-          }, 100);
-        } else {
-          zipArea.classList.remove("visible");
-
-          message.textContent =
-            "This option is currently intended for U.S. residents.";
-
-          message.className =
-            "message visible error";
-        }
+        // Both buttons currently redirect to the same example link.
+        // Replace https://example.com above with your final destination URL.
+        window.location.href = OFFER_URL;
       });
-    });
-
-    zipCode.addEventListener("input", function () {
-      this.value = this.value
-        .replace(/\D/g, "")
-        .slice(0, 5);
-    });
-
-    continueButton.addEventListener("click", function () {
-      const zipValue = zipCode.value.trim();
-
-      if (!/^\d{5}$/.test(zipValue)) {
-        message.textContent =
-          "Please enter a valid 5-digit ZIP code.";
-
-        message.className =
-          "message visible error";
-
-        zipCode.focus();
-        return;
-      }
-
-      message.textContent =
-        "Thank you. Checking available options in your area...";
-
-      message.className =
-        "message visible success";
     });
   </script>
 </body>
